@@ -1,6 +1,6 @@
-name: 'Git Commit and Push'
-description: 'Commits any changed files and pushes the result back to origin branch.'
-author: 'rusnasonov'
+name: 'Git Commit and Push w/ Force Push'
+description: 'Commits any changed files and pushes (with force option) the result back to origin branch.'
+author: 'dciborow'
 branding:
   icon: 'git-commit'
   color: 'green'
