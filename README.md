@@ -29,6 +29,7 @@ jobs:
         push-branch: 'master'
         commit-message: 'publish'
         force-add: 'true'
+        force-push: 'true'
         files: a.txt b.txt c.txt dirA/ dirB/ dirC/a.txt
         name: commiter name
         email: my.github@email.com 
