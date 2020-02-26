@@ -19,6 +19,10 @@ inputs:
     description: 'Force add files, useful for adding ignored files.'
     required: false
     default: 'false'
+  force-push:
+    description: 'Force push'
+    required: false
+    default: 'false'
   rebase:
     description: 'Pull and rebase before commiting. Useful when using commit inside matrix.'
     required: false
