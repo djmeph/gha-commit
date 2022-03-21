@@ -50,10 +50,7 @@ def run():
     push_args = ['push']
     if force_push == 'true':
         push_args.append('--force')
-    push_args.append('--follow-tags')
-    push_args.append('--set-upstream')
-    push_args.append('origin')
-    push_args.append(branch)
+    push_args.extend(('--follow-tags', '--set-upstream', 'origin', branch))
     debug(git(push_args))
 
 if __name__ == '__main__':
