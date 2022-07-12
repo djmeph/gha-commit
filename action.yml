@@ -4,7 +4,10 @@ author: 'dciborow'
 branding:
   icon: 'git-commit'
   color: 'green'
-inputs: 
+inputs:
+  actor:
+    description: 'Custom Github Actor to match Github Token'
+    required: false
   github-token:
     description: 'Github Token with commit access'
     required: true
