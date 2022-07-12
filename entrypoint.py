@@ -9,7 +9,7 @@ def debug(message: str):
 
 def run():
     netrc_path = os.path.join(local.env.get('HOME', ''), '.netrc')
-    github_actor = local.env.get('GITHUB_ACTOR')
+    github_actor = local.env.get('INPUT_ACTOR') or local.env.get('GITHUB_ACTOR')
     github_token = local.env.get('INPUT_GITHUB-TOKEN')
     commit_message = local.env.get('INPUT_COMMIT-MESSAGE')
     force_add = local.env.get('INPUT_FORCE-ADD')
@@ -26,7 +26,7 @@ def run():
             f'password {github_token}\n'
             f'machine api.github.com\n'
             f'login {github_actor}\n'
-            f'password {github_token}\n'
+            f'password {github_token}\n',
         )
     chmod = local['chmod']
     git = local['git']
@@ -44,6 +44,7 @@ def run():
         add_args.append(files)
     if rebase == 'true':
         debug(git(['pull', '--rebase', '--autostash', 'origin', branch]))
+    debug(git(['config', '--global', '--add', 'safe.directory', '/github/workspace']))
     debug(git(['checkout', '-B', branch]))
     debug(git(add_args))
     debug(git(['commit', '-m', commit_message], retcode=None))
