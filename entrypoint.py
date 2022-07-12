@@ -26,7 +26,7 @@ def run():
             f'password {github_token}\n'
             f'machine api.github.com\n'
             f'login {github_actor}\n'
-            f'password {github_token}\n'
+            f'password {github_token}\n',
         )
     chmod = local['chmod']
     git = local['git']
@@ -47,6 +47,7 @@ def run():
     debug(git(['checkout', '-B', branch]))
     debug(git(add_args))
     debug(git(['commit', '-m', commit_message], retcode=None))
+    debug(git(['config', '--global', '--add safe.directory', '/github/workspace']))
     push_args = ['push']
     if force_push == 'true':
         push_args.append('--force')
