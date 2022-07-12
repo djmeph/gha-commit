@@ -44,10 +44,10 @@ def run():
         add_args.append(files)
     if rebase == 'true':
         debug(git(['pull', '--rebase', '--autostash', 'origin', branch]))
+    debug(git(['config', '--global', '--add safe.directory', '/github/workspace']))
     debug(git(['checkout', '-B', branch]))
     debug(git(add_args))
     debug(git(['commit', '-m', commit_message], retcode=None))
-    debug(git(['config', '--global', '--add safe.directory', '/github/workspace']))
     push_args = ['push']
     if force_push == 'true':
         push_args.append('--force')
